@@ -1,0 +1,103 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light gray background */
+}
+
+/* Header styles */
+.header {
+    background-color: #ffffff; /* White header background */
+    color: #575757; /* Dark gray text */
+    padding: 10px;
+    position: relative; /* Position relative for z-index */
+    display: flex;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    flex: 1; /* Takes up remaining space */
+    text-align: left; /* Aligns text to the left */
+}
+
+/* Footer styles */
+.footer {
+    background-color: #ffffff; /* White footer background */
+    color: #000000; /* Black text */
+    padding: 10px;
+    position: fixed; /* Fixed position to stick at the bottom */
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    text-align: left; /* Aligns text to the left */
+}
+
+/* Styles for staff list */
+#staffList {
+    margin-top: 20px; /* Add spacing between header and staff list */
+}
+
+#staffList ul {
+    list-style-type: none; /* Removes default list styles */
+    padding: 0;
+}
+
+#staffList ul li {
+    background-color: #ffffff; /* White background for even rows */
+    padding: 10px;
+}
+
+#staffList ul li:nth-child(odd) {
+    background-color: #f0f0f0; /* Light gray background for odd rows */
+}
+
+#staffList ul li a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    display: block; /* Make anchor tag a block-level element */
+    padding: 5px; /* Add padding for clickable area */
+}
+
+#staffList ul li a:hover {
+    text-decoration: underline; /* Underline link on hover */
+}
+
+
+
+
+#staffDetails {
+    background-color: #fff; /* White background */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#staffDetails ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#staffDetails ul li {
+    margin-bottom: 10px;
+}
+
+#staffDetails ul li strong {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+}

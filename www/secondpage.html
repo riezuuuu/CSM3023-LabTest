@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="secondstyles.css">
+    <title>Staff Details</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var employeeNumber = urlParams.get('id');
+            if (employeeNumber) {
+                $.ajax({
+                    url: 'https://kerbau.odaje.biz/getstaffbyid.php?id=' + employeeNumber,
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data && data.length > 0 && JSON.parse(data[0]).status === 1) {
+                            var staff = JSON.parse(data[1]);
+                            var detailsHtml = '<ul>' +
+                                '<li>Employee Number: ' + staff.employeeNumber + '</li>' +
+                                '<li>Name: ' + staff.firstName + ' ' + staff.lastName + '</li>' +
+                                '<li>Email: ' + staff.email + '</li>' +
+                                '<li>Office Code: ' + staff.officeCode + '</li>' +
+                                '<li>Extension: ' + staff.extension + '</li>' +
+                                '<li>Job Title: ' + staff.jobTitle + '</li>';
+                            if (staff.reportsTo) {
+                                detailsHtml += '<li>Reports To: ' + staff.reportsTo + '</li>';
+                            }
+                            detailsHtml += '</ul>';
+                            $('#staffDetails').html(detailsHtml);
+                        } else {
+                            $('#staffDetails').html('<p>No data found for employee number ' + employeeNumber + '.</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#staffDetails').html('<p>Error retrieving staff details.</p>');
+                    }
+                });
+            } else {
+                $('#staffDetails').html('<p>Employee number not provided.</p>');
+            }
+        });
+    </script>
+    <div class="header">
+        <h1>CSM3503</h1>
+    </div>
+</head>
+<body>
+    <div class="container">
+        </div>
+    <div id="staffList"></div>
+    <!-- Footer -->
+    <div class="footer">
+        <p>Front End Programming Ⓒ 2024</p>
+    </div>
+    <div id="staffDetails"></div>
+    <script src="script.js"></script>
+</body>
+</html>

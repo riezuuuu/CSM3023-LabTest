@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Staff List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'https://kerbau.odaje.biz/getstaff.php',
+                dataType: 'json',
+                success: function(data) {
+                    if (data && data.length > 0) {
+                        var listHtml = '<ul>';
+                        data.forEach(function(staffJson) {
+                            var staff = JSON.parse(staffJson);
+                            var email = staff.email;
+                            var employeeNumber = staff.employeeNumber;
+                            listHtml += '<li><a href="secondpage.html?id=' + employeeNumber + '">' + email + '</a></li>';
+                        });
+                        listHtml += '</ul>';
+                        $('#staffList').html(listHtml);
+                    } else {
+                        $('#staffList').html('<p>No staff data available.</p>');
+                    }
+                },
+                error: function() {
+                    $('#staffList').html('<p>Error retrieving staff data.</p>');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CSM3503</h1>
+        </div>
+    <div id="staffList"></div>
+    <!-- Footer -->
+    <div class="footer">
+        <p>Front End Programming Ⓒ 2024</p>
+    </div>
+</body>
+</html>
+
